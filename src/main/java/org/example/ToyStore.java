@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.POJO.Toy;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,18 @@ public class ToyStore {
         toysStock = new ToysStock();
         basket = new Basket(toysStock);
         scanner = new Scanner(System.in);
-        startGame();
+        System.out.println("Game or addToy");
+        String v = scanner.next();
+        while(true) {
+            if (v.equals("Game")) {
+                startGame();
+            } else {
+                int id = scanner.nextInt();
+                String name = scanner.next();
+                int weight = scanner.nextInt();
+                addToys(id, name, weight);
+            }
+        }
     }
 
     public void startGame(){
@@ -40,6 +52,10 @@ public class ToyStore {
             }
         }
 
+    }
+    public void addToys(int id, String name, int weight){
+        Toy toy = new Toy(id,name,weight);
+        toysStock.add(toy);
     }
    private Toy randomizer(List list){
         int randomNumber = (int)Math.random() * list.size();

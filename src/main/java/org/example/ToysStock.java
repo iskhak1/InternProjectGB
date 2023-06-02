@@ -65,4 +65,7 @@ public class ToysStock {
       return queue;
   }
 
+    public void add(Toy toy) {
+        queue.add(toy);
+    }
 }
